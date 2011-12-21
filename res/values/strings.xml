@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TipIt</string>
+    <string name="LoginName">Login Name</string>
+    <string name="Passwort">Passwort</string>
+    <string name="LoginButton">Login</string>
+    <string name="SpieleTippen">Spiele tippen</string>
+    <string name="Gesamtplatzierung">Gesamtplatzierung</string>
+    <string name="Spielergebnisse">Spielergebnisse</string>
+
+</resources>
