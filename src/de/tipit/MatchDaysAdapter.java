@@ -42,6 +42,7 @@ public class MatchDaysAdapter extends BaseAdapter {
             textView = (TextView) convertView;
         }
         textView.setText(days[position]);
+        textView.setPadding(20, 20, 20, 20);
         return textView;
 	}
 

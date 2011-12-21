@@ -17,6 +17,8 @@ public class MatchTipActivity extends Activity {
 		matchDays.setAdapter(new MatchDaysAdapter(this));
 		
 		GridView matches = (GridView) findViewById(+id.Matches);
+		MatchesAdapter matchAdapter = new MatchesAdapter(this);
+		matches.setAdapter(matchAdapter);
 		
 	}
 

@@ -40,4 +40,10 @@
         android:layout_height="wrap_content"
         android:text="@string/LoginButton" />
 
+    <Button
+        android:id="@+id/erstanmeldung"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Erstanmeldung" />
+
 </LinearLayout>
