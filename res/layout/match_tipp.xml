@@ -9,12 +9,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <GridView
-        android:id="@+id/Matches"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2" >
-
-    </GridView>
-
 </LinearLayout>

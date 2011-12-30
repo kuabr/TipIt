@@ -16,10 +16,10 @@ public class MatchTipActivity extends Activity {
 		Spinner matchDays = (Spinner) findViewById(+id.MatchDay);
 		matchDays.setAdapter(new MatchDaysAdapter(this));
 		
-		GridView matches = (GridView) findViewById(+id.Matches);
+		MatchViewList matchViewList = new MatchViewList(this);
 		MatchesAdapter matchAdapter = new MatchesAdapter(this);
-		matches.setAdapter(matchAdapter);
+		matchViewList.setAdapter(matchAdapter);
 		
+		this.setContentView(matchViewList);
 	}
-
 }

@@ -38,7 +38,7 @@ public class MatchesAdapter extends BaseAdapter{
 	
 	@Override
 	public int getCount() {
-		return this.matches.size();
+		return this.matches.get(1).getMatches().size();
 	}
 
 	@Override
@@ -53,15 +53,11 @@ public class MatchesAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView;
-        if (convertView == null) {  // if it's not recycled, initialize some attributes
-            textView = new TextView(this.context);
-        } else {
-            textView = (TextView) convertView;
-        }
-        textView.setText("Deutschland : Polen");
-        textView.setPadding(20, 20, 20, 20);
-        return textView;
+		MatchView matchView = new MatchView(this.context);
+        MatchDay match = this.matches.get(1);
+        matchView.setFirstTeamName(match.getMatches().get(position).getFirstTeam());
+        matchView.setSecondTeamName(match.getMatches().get(position).getSecondTeam());
+        return matchView;    
 	}
 
 }
