@@ -12,6 +12,7 @@ public class MatchView extends LinearLayout{
 	private TeamView secondTeamLayout;
 	private EditText firstScore;
 	private EditText secondScore;
+	private final int TEXT_WITH = 20;
 
 	public MatchView(Context context) {
 		super(context);
@@ -29,10 +30,12 @@ public class MatchView extends LinearLayout{
 		
 		this.firstScore = new EditText(this.getContext());
 		this.firstScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+		this.firstScore.setWidth(TEXT_WITH);
 		this.addView(this.firstScore);
 		
 		this.secondScore = new EditText(this.getContext());
 		this.secondScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+		this.secondScore.setWidth(TEXT_WITH);
 		this.addView(this.secondScore);
 	}
 	
