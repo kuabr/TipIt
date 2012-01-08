@@ -9,15 +9,20 @@ import android.widget.TextView;
 
 public class MatchViewList extends LinearLayout {
 
+	private BaseAdapter adapter;
+
 	public MatchViewList(Context context) {
 		super(context);
 		this.setOrientation(VERTICAL);
 	}
 
 	public void setAdapter(BaseAdapter matchAdapter) {
-		for (int i = 0; i < matchAdapter.getCount(); i++) {
-			this.addView(matchAdapter.getView(i, null, this));
-		}
+		this.adapter = matchAdapter;
+	}
+
+	public void setNewMatchDay(int day) {
+		this.removeAllViews();
+		this.addView(this.adapter.getView(day, null, this));
 	}
 
 }

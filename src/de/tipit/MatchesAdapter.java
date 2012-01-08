@@ -9,6 +9,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MatchesAdapter extends BaseAdapter{
@@ -52,12 +53,16 @@ public class MatchesAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		MatchView matchView = new MatchView(this.context);
-        MatchDay match = this.matches.get(1);
-        matchView.setFirstTeamName(match.getMatches().get(position).getFirstTeam());
-        matchView.setSecondTeamName(match.getMatches().get(position).getSecondTeam());
-        return matchView;    
+	public View getView(int day, View convertView, ViewGroup parent) {
+		LinearLayout list = new LinearLayout(this.context);
+		list.setOrientation(LinearLayout.VERTICAL);
+		for (Match match : this.matches.get(day).getMatches()) {
+			MatchView matchView = new MatchView(this.context);
+			matchView.setFirstTeamName(match.getFirstTeam());
+			matchView.setSecondTeamName(match.getSecondTeam());
+			list.addView(matchView);
+		}
+        return list;    
 	}
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">TipIt</string>
     <string name="LoginName">Login Name</string>
     <string name="Passwort">Passwort</string>
@@ -9,5 +10,19 @@
     <string name="Spielergebnisse">Spielergebnisse</string>
     <string name="Erstanmeldung">Erstanmeldung</string>
     <string name="TipIt">TipIt - Das EM-Tippspiel</string>
+    <string name="match_day_prompt">Choose a day</string>
+
+    <string-array name="match_day_array">
+        <item>Tag 1</item>
+        <item>Tag 2</item>
+        <item>Tag 3</item>
+        <item>Tag 4</item>
+        <item>Tag 5</item>
+        <item>Tag 6</item>
+        <item>Tag 7</item>
+        <item>Tag 8</item>
+        <item>Tag 9</item>
+        <item>Tag 10</item>
+    </string-array>
 
 </resources>
