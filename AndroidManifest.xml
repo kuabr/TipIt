@@ -29,6 +29,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name="AdministrationActivity">
+            <intent-filter>
+                <action android:name="de.tipit.ADMINISTRATIONACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         </application>
 
 </manifest>

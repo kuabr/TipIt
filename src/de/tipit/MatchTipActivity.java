@@ -1,17 +1,14 @@
 package de.tipit;
 
-import de.tipit.R.id;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
+import de.tipit.R.id;
 
 public class MatchTipActivity extends Activity {
 
@@ -26,27 +23,29 @@ public class MatchTipActivity extends Activity {
 
 		this.matchDays = (Spinner) findViewById(+id.MatchDay);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-	            this, R.array.match_day_array, android.R.layout.simple_spinner_item);
-	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	    matchDays.setAdapter(adapter);
+				this, R.array.match_day_array,
+				android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		matchDays.setAdapter(adapter);
 
-	    this.matchViewList = new MatchViewList(this);
+		this.matchViewList = new MatchViewList(this);
 		MatchesAdapter matchAdapter = new MatchesAdapter(this);
 		matchViewList.setAdapter(matchAdapter);
 
 		layout.addView(matchViewList);
 
 		this.bind();
-		
+
 	}
-	
+
 	private void bind() {
-	    matchDays.setOnItemSelectedListener(new OnItemSelectedListener() {
+		matchDays.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				MatchTipActivity.this.matchViewList.setNewMatchDay(position + 1);
+				MatchTipActivity.this.matchViewList
+						.setNewMatchDay(position + 1);
 			}
 
 			@Override
@@ -54,7 +53,6 @@ public class MatchTipActivity extends Activity {
 				// TODO Auto-generated method stub
 			}
 		});
-		
 
 	}
 }

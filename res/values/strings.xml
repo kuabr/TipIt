@@ -9,8 +9,12 @@
     <string name="Gesamtplatzierung">Gesamtplatzierung</string>
     <string name="Spielergebnisse">Spielergebnisse</string>
     <string name="Erstanmeldung">Erstanmeldung</string>
+    <string name="ErgebnisseEintragen">Ergebnisse eintragen</string>
     <string name="TipIt">TipIt - Das EM-Tippspiel</string>
-    <string name="match_day_prompt">Choose a day</string>
+    <string name="match_day_prompt">Wähle Spieltag</string>
+    <string name="help">Hilfe</string>
+    <string name="toast_help">Sorry, dir ist nicht mehr zu helfen.</string>
+    <string name="administration">Administration</string>
 
     <string-array name="match_day_array">
         <item>Tag 1</item>
