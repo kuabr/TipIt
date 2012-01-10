@@ -1,0 +1,8 @@
+== TipIt
+TipIt is an Android app for betting pools.
+
+== Back-end
+The corresponding back-end system is also available via github (https://github.com/kuabr/TipItServer).
+
+== Goals
+* Finalize the app until UEFA EURO Championship 2012, starting June, 8th
