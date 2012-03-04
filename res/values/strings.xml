@@ -28,5 +28,7 @@
         <item>Tag 9</item>
         <item>Tag 10</item>
     </string-array>
+    <string name="error">Fehler</string>
+    <string name="welcome">Herzlich willkommen</string>
 
 </resources>

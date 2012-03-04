@@ -24,6 +24,10 @@ public class GeneralError extends Exception {
         super(calcMessage(context, messageDE, messageEN));
     }
 
+    public GeneralError(String message) {
+        super(message);
+    }
+
     @Override
     public String getLocalizedMessage() {
         return super.getMessage(); // localized message is already set ;-)

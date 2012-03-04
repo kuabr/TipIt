@@ -56,8 +56,10 @@ public final class R {
         public static final int TipIt=0x7f040009;
         public static final int administration=0x7f04000d;
         public static final int app_name=0x7f040000;
+        public static final int error=0x7f04000e;
         public static final int help=0x7f04000b;
         public static final int match_day_prompt=0x7f04000a;
         public static final int toast_help=0x7f04000c;
+        public static final int welcome=0x7f04000f;
     }
 }

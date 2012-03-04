@@ -1,23 +1,5 @@
 package de.tipit;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +8,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import de.tipit.R.id;
-import de.tipit.server.transfer.access.InvocationResult;
-import de.tipit.server.transfer.access.UserSessionInvocation;
-import de.tipit.server.transfer.access.user_session.DoLogin;
+import de.tipit.client.transfer.HttpTransferHandler;
+import de.tipit.client.transfer.UserSessionTransfer;
+import de.tipit.helper.Messenger;
+import de.tipit.server.transfer.access.GeneralError;
 import de.tipit.server.transfer.data.ContextTO;
 import de.tipit.server.transfer.data.LoginParameterTO;
 import de.tipit.server.transfer.data.SessionTO;
@@ -38,15 +20,17 @@ import de.tipit.server.transfer.data.UserAccountTO;
 
 public class TipItActivity extends Activity {
 
-    private static String serverAddress = "192.168.0.120";
-    // TODO: read address from formular or XML-file
+    private static String serverAddress = "192.168.0.100"; // TODO: Auslagern in
+                                                           // andere View!
 
-    private static int serverPort = 8080;
+    private static int serverPort = 8080; // TODO: Auslagern in andere View!
 
-    private static SessionTO session = new SessionTO();
+    private static SessionTO session = new SessionTO(); // TODO: Auslagern in
+                                                        // andere Klasse!
 
-    // TODO: put following method to a separate class
-    private static SessionTO doLogin(Context ac, String userName, String password) {
+    private final Messenger messenger = new Messenger(this);
+
+    private static SessionTO doLogin(Context ac, String userName, String password) throws GeneralError {
         // create transfer objects
         ContextTO context = new ContextTO();
         context.setLanguage(ContextTO.Language.DE);
@@ -57,75 +41,23 @@ public class TipItActivity extends Activity {
         loginParameter.setSessionDuration(LoginParameterTO.SessionDuration.DAY);
         loginParameter.setKillOldSessions(false);
 
-        // create objects for invocation
-        DoLogin doLogin = new DoLogin();
-        doLogin.setContext(context);
-        doLogin.setUserAccount(userAccount);
-        doLogin.setLoginParameter(loginParameter);
-        UserSessionInvocation invocation = new UserSessionInvocation(doLogin);
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        Serializer serializer = new Persister();
-        String data = null;
-        try {
-            serializer.write(invocation, out);
-            data = out.toString("UTF-8");
-        } catch (Exception e) {
-            Toast toast = Toast.makeText(ac, e.getMessage(), Toast.LENGTH_LONG);
-            toast.show();
-            return null;
-        }
-
-        // execute login on server
-        BufferedReader in = null;
-        try {
-            // do post to server
-            HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost();
-            post.setURI(new URI("http://" + serverAddress + ":" + serverPort + "/TipItServer/UserSession"));
-            List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-            pairs.add(new BasicNameValuePair("data", data));
-            post.setEntity(new UrlEncodedFormEntity(pairs));
-            HttpResponse response = client.execute(post);
-
-            // evaluate response
-            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            StringBuffer sb = new StringBuffer("");
-            String line = "";
-            String newLine = System.getProperty("line.separator");
-            while ((line = in.readLine()) != null) {
-                sb.append(line + newLine);
-            }
-            in.close();
-            String text = sb.toString();
-
-            // create object
-            InvocationResult result = serializer.read(InvocationResult.class, text);
-            if (result.getError() != null) {
-                Toast toast = Toast.makeText(ac, result.getError().getDisplayMessage(), Toast.LENGTH_LONG);
-                toast.show();
-                return null;
-            } else {
-                DoLogin.Result resultData = (DoLogin.Result) result.getData();
-                return resultData.getSession();
-            }
-        } catch (Throwable t) {
-            Toast toast = Toast.makeText(ac, t.getMessage(), Toast.LENGTH_LONG);
-            toast.show();
-            return null;
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    Toast toast = Toast.makeText(ac, e.getMessage(), Toast.LENGTH_LONG);
-                    toast.show();
-                    return null;
-                }
-            }
-        }
+        // do invocation
+        UserSessionTransfer transfer = new UserSessionTransfer(new HttpTransferHandler(serverAddress, serverPort)); // TODO:
+                                                                                                                    // auslagern
+        return transfer.doLogin(context, userAccount, loginParameter);
     }
 
-    /** Called when the activity is first created. */
+    private static synchronized void setSession(SessionTO session) { // TODO:
+                                                                     // Wieder
+                                                                     // entfernen!
+        TipItActivity.session = session;
+    }
+
+    public static synchronized SessionTO getSession() { // TODO: Wieder
+                                                        // entfernen!
+        return TipItActivity.session;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,16 +67,32 @@ public class TipItActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                EditText userNameItem = (EditText) findViewById(+id.editText1);
-                EditText passwordItem = (EditText) findViewById(+id.editText2);
+                final String userName = ((EditText) findViewById(+id.editText1)).getText().toString();
+                final String password = ((EditText) findViewById(+id.editText2)).getText().toString();
 
-                session = doLogin(getApplicationContext(), userNameItem.getText().toString(), passwordItem.getText().toString());
-                // TODO: execute 'doLogin' in a thread
-                if (session != null) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Herzlich willkommen '" + session.getUserName() + "' !!!", Toast.LENGTH_LONG);
-                    toast.show();
-                    startActivity(new Intent(TipItActivity.this, OverviewActivity.class));
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            SessionTO newSession = TipItActivity.doLogin(TipItActivity.this.getApplicationContext(), userName, password);
+                            TipItActivity.setSession(newSession);
+                            if (session != null) {
+                                TipItActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        final String welcomeString = TipItActivity.this.getString(R.string.welcome);
+                                        messenger.showInfo(welcomeString + " '" + session.getUserName() + "' ...");
+                                        startActivity(new Intent(TipItActivity.this, OverviewActivity.class));
+                                    }
+                                });
+                            }
+                        } catch (GeneralError error) {
+                            TipItActivity.this.messenger.showError(error);
+                        } catch (RuntimeException exc) {
+                            TipItActivity.this.messenger.showError(exc);
+                        }
+                    }
+                }).start();
             }
         });
     }

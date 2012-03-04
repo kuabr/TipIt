@@ -40,12 +40,12 @@ public class ReadTournament implements AnalysisTask {
     private SessionIdTO sessionId;
 
     @Element(required = true)
-    private TournamentIdTO tournamentId;
+    private TournamentIdTO tournId;
 
     @Override
     public InvocationResult execute(Analysis delegate) {
         try {
-            return new InvocationResult(new Result(delegate.readTournament(context, sessionId, tournamentId)));
+            return new InvocationResult(new Result(delegate.readTournament(context, sessionId, tournId)));
         } catch (GeneralError exc) {
             return new InvocationResult(exc);
         } catch (RuntimeException exc) {
@@ -69,11 +69,11 @@ public class ReadTournament implements AnalysisTask {
         this.sessionId = sessionId;
     }
 
-    public TournamentIdTO getTournamentId() {
-        return tournamentId;
+    public TournamentIdTO getTournId() {
+        return tournId;
     }
 
-    public void setTournamentId(TournamentIdTO tournamentId) {
-        this.tournamentId = tournamentId;
+    public void setTournId(TournamentIdTO tournId) {
+        this.tournId = tournId;
     }
 }

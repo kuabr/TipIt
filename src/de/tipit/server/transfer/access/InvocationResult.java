@@ -26,7 +26,7 @@ public class InvocationResult {
         this.data = null;
     }
 
-    public InvocationResult(RuntimeException exc) {
+    public InvocationResult(Throwable exc) {
         this.error = new ErrorTO();
         this.error.setType(exc.getClass().getName());
         this.error.setDisplayMessage("SYSTEM [" + exc.getMessage() + "]");
