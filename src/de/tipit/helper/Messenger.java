@@ -35,6 +35,16 @@ public class Messenger {
         });
     }
 
+    public void showError(final String errorMessage) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast toast = Toast.makeText(activity.getApplicationContext(), errorMessage, Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
+
     public void showInfo(final String message) {
         activity.runOnUiThread(new Runnable() {
             @Override

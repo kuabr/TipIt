@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TipIt</string>
-    <string name="LoginName">Login Name</string>
-    <string name="Passwort">Passwort</string>
-    <string name="LoginButton">Login</string>
+    <string name="error">Fehler</string>
+    <string name="appName">TipIt</string>
+    <string name="address">(IP-)Adresse des Servers</string>
+    <string name="port">Port</string>
+    <string name="portError">Falsche Port-Nummer eingegeben!</string>
+    <string name="start">Start</string>
+    <string name="username">Login Name</string>
+    <string name="password">Passwort</string>
+    <string name="login">Login</string>
+    <string name="register">Registrieren</string>
+    <string name="guest">Gast</string>
+    <string name="passwordForgotten">Passwort vergessen</string>
+    <string name="welcome">Herzlich willkommen</string>
     <string name="SpieleTippen">Spiele tippen</string>
     <string name="Gesamtplatzierung">Gesamtplatzierung</string>
     <string name="Spielergebnisse">Spielergebnisse</string>
-    <string name="Erstanmeldung">Erstanmeldung</string>
     <string name="ErgebnisseEintragen">Ergebnisse eintragen</string>
-    <string name="TipIt">TipIt - Das EM-Tippspiel</string>
     <string name="match_day_prompt">Wähle Spieltag</string>
     <string name="help">Hilfe</string>
     <string name="toast_help">Sorry, dir ist nicht mehr zu helfen.</string>
@@ -28,7 +35,5 @@
         <item>Tag 9</item>
         <item>Tag 10</item>
     </string-array>
-    <string name="error">Fehler</string>
-    <string name="welcome">Herzlich willkommen</string>
 
 </resources>

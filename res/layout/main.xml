@@ -2,48 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#008000"
     android:gravity="center"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/appNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/LoginName"
+        android:layout_gravity="center"
+        android:text="@string/appName"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFF00"
+        android:textSize="110dp" />
+
+    <TextView
+        android:id="@+id/addressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/addressInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName" >
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/portText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Passwort"
+        android:text="@string/port"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/portInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+        android:inputType="number" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/startButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/LoginButton" />
-
-    <Button
-        android:id="@+id/erstanmeldung"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="@string/Erstanmeldung" />
+        android:text="@string/start" />
 
 </LinearLayout>

@@ -10,15 +10,17 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/appName" >
         <activity
-            android:name=".TipItActivity"
-            android:label="@string/app_name" >
+            android:name="TipItActivity"
+            android:label="@string/appName" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="LoginActivity" >
         </activity>
         <activity android:name="OverviewActivity" >
             <intent-filter>
