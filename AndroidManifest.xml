@@ -12,36 +12,25 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/appName" >
         <activity
-            android:name="TipItActivity"
-            android:label="@string/appName" >
+            android:name="de.tipit.activity.TipItActivity"
+            android:label="@string/appTitle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="LoginActivity" >
+        <activity
+            android:name="de.tipit.activity.session.LoginActivity"
+            android:label="@string/login" >
         </activity>
-        <activity android:name="OverviewActivity" >
-            <intent-filter>
-                <action android:name="de.tipit.OVERVIEWACTION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        <activity
+            android:name="de.tipit.activity.OverviewActivity"
+            android:label="@string/appName" >
         </activity>
         <activity android:name="MatchTipActivity" >
-            <intent-filter>
-                <action android:name="de.tipit.MATCHTIPACTION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name="AdministrationActivity" >
-            <intent-filter>
-                <action android:name="de.tipit.ADMINISTRATIONACTION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
     </application>
 

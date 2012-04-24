@@ -22,15 +22,17 @@ public class MatchTipActivity extends Activity {
 		LinearLayout layout = (LinearLayout) findViewById(+id.MatchTipLayout);
 
 		this.matchDays = (Spinner) findViewById(+id.MatchDay);
+		/*
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.match_day_array,
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		matchDays.setAdapter(adapter);
+		*/
 
 		this.matchViewList = new MatchViewList(this);
-		MatchesAdapter matchAdapter = new MatchesAdapter(this);
-		matchViewList.setAdapter(matchAdapter);
+		//MatchesAdapter matchAdapter = new MatchesAdapter(this);
+		//matchViewList.setAdapter(matchAdapter);
 
 		layout.addView(matchViewList);
 

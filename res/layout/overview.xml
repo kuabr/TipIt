@@ -1,28 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#006000"
+    android:gravity="center"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/SpieleTippen"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/chooseText:"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/SpieleTippen" />
+        android:text="@string/mainMenu"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#00FF00" />
 
     <Button
-        android:id="@+id/Spielergebnisse"
+        android:id="@+id/betResultButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/Spielergebnisse" />
+        android:layout_marginTop="12dp"
+        android:text="@string/betResult"
+        android:textColor="#FFFF00" />
 
     <Button
-        android:id="@+id/Gesamtplatzierung"
+        android:id="@+id/analysisButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/Gesamtplatzierung" />
+        android:layout_marginTop="1dp"
+        android:text="@string/analysis"
+        android:textColor="#FF0000" />
+
+    <Button
+        android:id="@+id/tournamentAdminButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/tournamentAdmin"
+        android:textColor="#00C000" />
+
+    <Button
+        android:id="@+id/communityAdminButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="@string/communityAdmin"
+        android:textColor="#00C000" />
+
+    <Button
+        android:id="@+id/userSessionButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="@string/userSession"
+        android:textColor="#00C000" />
+
+    <Button
+        android:id="@+id/rulesAdminButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="@string/rulesAdmin"
+        android:textColor="#00C000" />
+
+    <Button
+        android:id="@+id/metaDataAdminButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="@string/metaDataAdmin"
+        android:textColor="#004000" />
 
 </LinearLayout>

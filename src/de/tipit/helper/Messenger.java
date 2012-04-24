@@ -54,4 +54,16 @@ public class Messenger {
             }
         });
     }
+
+    public void showFeatureNotImplementedError() {
+        final String errorText = activity.getString(R.string.featureNotImplementedError);
+
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast toast = Toast.makeText(activity.getApplicationContext(), errorText, Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
 }

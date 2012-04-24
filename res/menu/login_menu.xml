@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/registerItem"
+        android:title="@string/register"/>
+    <item
+        android:id="@+id/guestItem"
+        android:title="@string/guest"/>
+    <item
+        android:id="@+id/passwordForgottenItem"
+        android:title="@string/passwordForgotten"/>
+
+</menu>

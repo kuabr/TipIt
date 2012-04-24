@@ -41,24 +41,18 @@
         android:id="@+id/loginButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:layout_marginTop="12dp"
+        android:text="@string/login"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/loginMenuHint"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register" />
-
-    <Button
-        android:id="@+id/guestButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="@string/guest" />
-
-    <Button
-        android:id="@+id/passwordForgottenButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="@string/passwordForgotten" />
+        android:layout_marginTop="12dp"
+        android:text="@string/seeMenuHint"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp" />
 
 </LinearLayout>

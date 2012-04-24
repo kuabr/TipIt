@@ -8,7 +8,6 @@
     <Spinner
         android:id="@+id/MatchDay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/match_day_prompt"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

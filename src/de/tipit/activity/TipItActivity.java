@@ -1,4 +1,4 @@
-package de.tipit;
+package de.tipit.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import de.tipit.R;
 import de.tipit.R.id;
+import de.tipit.activity.session.LoginActivity;
 import de.tipit.helper.Messenger;
 import de.tipit.helper.Transfer;
 
@@ -18,7 +20,7 @@ public class TipItActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.start);
         Button startButton = (Button) findViewById(+id.startButton);
         startButton.setOnClickListener(new OnClickListener() {
             @Override

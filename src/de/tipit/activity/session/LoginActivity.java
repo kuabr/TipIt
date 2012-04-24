@@ -1,14 +1,19 @@
-package de.tipit;
+package de.tipit.activity.session;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import de.tipit.R;
 import de.tipit.R.id;
+import de.tipit.activity.OverviewActivity;
 import de.tipit.helper.Messenger;
 import de.tipit.helper.SessionContainer;
 import de.tipit.helper.Transfer;
@@ -37,10 +42,7 @@ public class LoginActivity extends Activity {
         return Transfer.getInstance().getUserSessionTransfer().doLogin(context, userAccount, loginParameter);
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+    private void inspireLoginButton() {
         Button loginButton = (Button) findViewById(+id.loginButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -58,7 +60,7 @@ public class LoginActivity extends Activity {
                                     @Override
                                     public void run() {
                                         final String welcomeString = LoginActivity.this.getString(R.string.welcome);
-                                        messenger.showInfo(welcomeString + " '" + SessionContainer.getSession().getUserName() + "' ...");
+                                        messenger.showInfo(welcomeString + " '" + SessionContainer.getSession().getUserName() + "' !!!");
                                         startActivity(new Intent(LoginActivity.this, OverviewActivity.class));
                                     }
                                 });
@@ -72,5 +74,48 @@ public class LoginActivity extends Activity {
                 }).start();
             }
         });
+    }
+
+    private void evaluateRegisterClick() {
+        messenger.showFeatureNotImplementedError();
+    }
+
+    private void evaluateGuestClick() {
+        messenger.showFeatureNotImplementedError();
+    }
+
+    private void evaluatePasswordForgottenClick() {
+        messenger.showFeatureNotImplementedError();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+        this.inspireLoginButton();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.login_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.registerItem:
+            this.evaluateRegisterClick();
+            return true;
+        case R.id.guestItem:
+            this.evaluateGuestClick();
+            return true;
+        case R.id.passwordForgottenItem:
+            this.evaluatePasswordForgottenClick();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

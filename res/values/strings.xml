@@ -2,6 +2,8 @@
 <resources>
 
     <string name="error">Fehler</string>
+    <string name="featureNotImplementedError">Dieses Feature ist leider noch nicht verfügbar :-( .</string>
+    <string name="appTitle">Das Tippspiel</string>
     <string name="appName">TipIt</string>
     <string name="address">(IP-)Adresse des Servers</string>
     <string name="port">Port</string>
@@ -13,27 +15,18 @@
     <string name="register">Registrieren</string>
     <string name="guest">Gast</string>
     <string name="passwordForgotten">Passwort vergessen</string>
+    <string name="seeMenuHint">Drücke Menü-Taste für weitere Optionen …</string>
     <string name="welcome">Herzlich willkommen</string>
-    <string name="SpieleTippen">Spiele tippen</string>
-    <string name="Gesamtplatzierung">Gesamtplatzierung</string>
-    <string name="Spielergebnisse">Spielergebnisse</string>
-    <string name="ErgebnisseEintragen">Ergebnisse eintragen</string>
-    <string name="match_day_prompt">Wähle Spieltag</string>
+    <string name="mainMenu">Hauptmenü</string>
+    <string name="betResult">Tipps / Ergebnisse eintragen</string>
+    <string name="analysis">Auswertungen ansehen</string>
+    <string name="tournamentAdmin">Turniere verwalten</string>
+    <string name="communityAdmin">Gemeinschaften verwalten</string>
+    <string name="userSession">Nutzerdaten anpassen</string>
+    <string name="rulesAdmin">Regelwerke verwalten</string>
+    <string name="metaDataAdmin">Stammdaten verwalten</string>
+    <string name="properties">Einstellungen</string>
     <string name="help">Hilfe</string>
-    <string name="toast_help">Sorry, dir ist nicht mehr zu helfen.</string>
-    <string name="administration">Administration</string>
-
-    <string-array name="match_day_array">
-        <item>Tag 1</item>
-        <item>Tag 2</item>
-        <item>Tag 3</item>
-        <item>Tag 4</item>
-        <item>Tag 5</item>
-        <item>Tag 6</item>
-        <item>Tag 7</item>
-        <item>Tag 8</item>
-        <item>Tag 9</item>
-        <item>Tag 10</item>
-    </string-array>
+    <string name="logout">Logout</string>
 
 </resources>

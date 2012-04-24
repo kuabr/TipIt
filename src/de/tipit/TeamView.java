@@ -14,7 +14,7 @@ public class TeamView extends LinearLayout {
 		this.setOrientation(VERTICAL);
 
 		ImageView image = new ImageView(this.getContext());
-		image.setImageResource(R.drawable.deu);
+		//image.setImageResource(R.drawable.deu);
 		this.addView(image);
 
 		this.name = new TextView(this.getContext());
