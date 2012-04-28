@@ -21,16 +21,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.tipit.activity.session.LoginActivity"
+            android:name="de.tipit.activity.user_session.LoginActivity"
             android:label="@string/login" >
         </activity>
         <activity
             android:name="de.tipit.activity.OverviewActivity"
             android:label="@string/appName" >
         </activity>
-        <activity android:name="MatchTipActivity" >
-        </activity>
-        <activity android:name="AdministrationActivity" >
+        <activity
+            android:name="de.tipit.activity.bet_result.BetResultActivity"
+            android:label="@string/appName" >
         </activity>
     </application>
 

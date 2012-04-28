@@ -3,12 +3,15 @@
 
     <item
         android:id="@+id/registerItem"
+        android:icon="@drawable/ic_menu_allfriends"
         android:title="@string/register"/>
     <item
         android:id="@+id/guestItem"
+        android:icon="@drawable/ic_menu_emoticons"
         android:title="@string/guest"/>
     <item
         android:id="@+id/passwordForgottenItem"
+        android:icon="@drawable/ic_menu_account_list"
         android:title="@string/passwordForgotten"/>
 
 </menu>

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import de.tipit.R;
 import de.tipit.R.id;
-import de.tipit.activity.session.LoginActivity;
+import de.tipit.activity.user_session.LoginActivity;
 import de.tipit.helper.Messenger;
 import de.tipit.helper.Transfer;
 
@@ -17,10 +17,7 @@ public class TipItActivity extends Activity {
 
     private final Messenger messenger = new Messenger(this);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.start);
+    private void inspireStartButton() {
         Button startButton = (Button) findViewById(+id.startButton);
         startButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -36,5 +33,13 @@ public class TipItActivity extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.start);
+
+        this.inspireStartButton();
     }
 }

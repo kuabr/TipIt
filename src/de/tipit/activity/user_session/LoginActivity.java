@@ -1,7 +1,6 @@
-package de.tipit.activity.session;
+package de.tipit.activity.user_session;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,7 +26,7 @@ public class LoginActivity extends Activity {
 
     private final Messenger messenger = new Messenger(this);
 
-    private static SessionTO doLogin(Context ac, String userName, String password) throws GeneralError {
+    private static SessionTO doLogin(String userName, String password) throws GeneralError {
         // create transfer objects
         ContextTO context = new ContextTO();
         context.setLanguage(ContextTO.Language.DE);
@@ -54,7 +53,7 @@ public class LoginActivity extends Activity {
                     @Override
                     public void run() {
                         try {
-                            SessionContainer.setSession(LoginActivity.doLogin(LoginActivity.this.getApplicationContext(), userName, password));
+                            SessionContainer.setSession(LoginActivity.doLogin(userName, password));
                             if (SessionContainer.hasSession()) {
                                 LoginActivity.this.runOnUiThread(new Runnable() {
                                     @Override
@@ -76,15 +75,15 @@ public class LoginActivity extends Activity {
         });
     }
 
-    private void evaluateRegisterClick() {
+    private void handleRegisterClick() {
         messenger.showFeatureNotImplementedError();
     }
 
-    private void evaluateGuestClick() {
+    private void handleGuestClick() {
         messenger.showFeatureNotImplementedError();
     }
 
-    private void evaluatePasswordForgottenClick() {
+    private void handlePasswordForgottenClick() {
         messenger.showFeatureNotImplementedError();
     }
 
@@ -92,6 +91,7 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
         this.inspireLoginButton();
     }
 
@@ -106,13 +106,13 @@ public class LoginActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.registerItem:
-            this.evaluateRegisterClick();
+            this.handleRegisterClick();
             return true;
         case R.id.guestItem:
-            this.evaluateGuestClick();
+            this.handleGuestClick();
             return true;
         case R.id.passwordForgottenItem:
-            this.evaluatePasswordForgottenClick();
+            this.handlePasswordForgottenClick();
             return true;
         default:
             return super.onOptionsItemSelected(item);

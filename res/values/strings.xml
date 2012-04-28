@@ -18,15 +18,28 @@
     <string name="seeMenuHint">Drücke Menü-Taste für weitere Optionen …</string>
     <string name="welcome">Herzlich willkommen</string>
     <string name="mainMenu">Hauptmenü</string>
-    <string name="betResult">Tipps / Ergebnisse eintragen</string>
-    <string name="analysis">Auswertungen ansehen</string>
-    <string name="tournamentAdmin">Turniere verwalten</string>
-    <string name="communityAdmin">Gemeinschaften verwalten</string>
-    <string name="userSession">Nutzerdaten anpassen</string>
-    <string name="rulesAdmin">Regelwerke verwalten</string>
-    <string name="metaDataAdmin">Stammdaten verwalten</string>
+    <string name="betResult">Tipps / Ergebnisse</string>
+    <string name="analysis">Auswertungen</string>
+    <string name="tournamentAdmin">Meisterschaften</string>
+    <string name="communityAdmin">Gemeinschaften</string>
+    <string name="userSession">Nutzerdaten</string>
+    <string name="rulesAdmin">Regelwerke</string>
+    <string name="metaDataAdmin">Stammdaten</string>
     <string name="properties">Einstellungen</string>
     <string name="help">Hilfe</string>
     <string name="logout">Logout</string>
+    <string name="byebye">Tschüß und bis zum nächsten Mal !!!</string>
+    <string name="showTournOverview">Turnierübersicht anzeigen</string>
+    <string name="showLastResultBets">Letzte Ergebnistipps anzeigen</string>
+    <string name="addNextResultBets">Nächste Ergebnistipps abgeben</string>
+    <string name="showLastWinnerBets">Letzte Gewinnertipps anzeigen</string>
+    <string name="addNextWinnerBets">Nächste Gewinnertipps abgeben</string>
+    <string name="showLastResults">Letzte Ergebnisse anzeigen</string>
+    <string name="addNextResults">Nächste Ergebnisse eintragen</string>
+    <string name="changeResults">Ergebnisse ändern</string>
+    <string name="addNextMatches">Nächste Paarungen eintragen</string>
+    <string name="changeMatches">Paarungen ändern</string>
+    <string name="addNextWinners">Nächste Gewinner eintragen</string>
+    <string name="changeWinners">Gewinner ändern</string>
 
 </resources>

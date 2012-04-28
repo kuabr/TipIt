@@ -1,27 +1,29 @@
 package de.tipit.activity;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import de.tipit.R;
 import de.tipit.R.id;
+import de.tipit.activity.bet_result.BetResultActivity;
 import de.tipit.helper.Messenger;
 
-public class OverviewActivity extends Activity {
+public class OverviewActivity extends MenuActivity {
 
     private final Messenger messenger = new Messenger(this);
+
+    private final MenuHandler menuDelegate = new MenuHandler(this.messenger, this);
 
     private void inspireBetResultButton() {
         Button loginButton = (Button) findViewById(+id.betResultButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                messenger.showFeatureNotImplementedError();
+                startActivity(new Intent(OverviewActivity.this, BetResultActivity.class));
             }
         });
     }
@@ -86,15 +88,13 @@ public class OverviewActivity extends Activity {
         });
     }
 
-    private void evaluatePropertiesClick() {
+    @Override
+    public void showPropertiesDialog() {
         messenger.showFeatureNotImplementedError();
     }
 
-    private void evaluateHelpClick() {
-        messenger.showFeatureNotImplementedError();
-    }
-
-    private void evaluateLogoutClick() {
+    @Override
+    public void showHelp() {
         messenger.showFeatureNotImplementedError();
     }
 
@@ -102,6 +102,7 @@ public class OverviewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview);
+
         this.inspireBetResultButton();
         this.inspireAnalysisButton();
         this.inspireTournamentAdminButton();
@@ -113,25 +114,11 @@ public class OverviewActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.overview_menu, menu);
-        return true;
+        return this.menuDelegate.doCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.propertiesItem:
-            this.evaluatePropertiesClick();
-            return true;
-        case R.id.helpItem:
-            this.evaluateHelpClick();
-            return true;
-        case R.id.logoutItem:
-            this.evaluateLogoutClick();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-        }
+        return this.menuDelegate.onOptionsItemSelected(item);
     }
 }

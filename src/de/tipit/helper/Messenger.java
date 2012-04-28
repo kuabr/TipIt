@@ -61,7 +61,7 @@ public class Messenger {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast toast = Toast.makeText(activity.getApplicationContext(), errorText, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(activity.getApplicationContext(), errorText, Toast.LENGTH_SHORT);
                 toast.show();
             }
         });

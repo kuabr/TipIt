@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#006000"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/chooseText:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/betResult"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFF00"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/showTournOverviewButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/showTournOverview"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/showLastResultBetsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/showLastResultBets"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/addNextResultBetsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/addNextResultBets"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/showLastWinnerBetsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/showLastWinnerBets"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/addNextWinnerBetsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/addNextWinnerBets"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/showLastResultsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/showLastResults"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/addNextResultsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/addNextResults"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/changeResultsButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/changeResults"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/addNextMatchesButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/addNextMatches"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/changeMatchesButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/changeMatches"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/addNextWinnersButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/addNextWinners"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/changeWinnersButton"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/changeWinners"
+        android:textSize="10dp" />
+
+</LinearLayout>
