@@ -29,17 +29,18 @@
     <string name="help">Hilfe</string>
     <string name="logout">Logout</string>
     <string name="byebye">Tschüß und bis zum nächsten Mal !!!</string>
-    <string name="showTournOverview">Turnierübersicht anzeigen</string>
-    <string name="showLastResultBets">Letzte Ergebnistipps anzeigen</string>
-    <string name="addNextResultBets">Nächste Ergebnistipps abgeben</string>
-    <string name="showLastWinnerBets">Letzte Gewinnertipps anzeigen</string>
-    <string name="addNextWinnerBets">Nächste Gewinnertipps abgeben</string>
-    <string name="showLastResults">Letzte Ergebnisse anzeigen</string>
-    <string name="addNextResults">Nächste Ergebnisse eintragen</string>
+    <string name="showTournaments">Turniere anzeigen</string>
+    <string name="showGameBets">Ergebnistipps anzeigen</string>
+    <string name="addGameBets">Ergebnisse tippen</string>
+    <string name="showWinnerBets">Siegermannschaftstipps anzeigen</string>
+    <string name="addWinnerBets">Siegermannschaften tippen</string>
+    <string name="showResults">Ergebnisse anzeigen</string>
+    <string name="addResults">Ergebnisse eintragen</string>
     <string name="changeResults">Ergebnisse ändern</string>
-    <string name="addNextMatches">Nächste Paarungen eintragen</string>
-    <string name="changeMatches">Paarungen ändern</string>
-    <string name="addNextWinners">Nächste Gewinner eintragen</string>
-    <string name="changeWinners">Gewinner ändern</string>
+    <string name="addMatches">Mannschaftspaarungen eintragen</string>
+    <string name="changeMatches">Mannschaftspaarungen ändern</string>
+    <string name="addWinners">Siegermannschaften eintragen</string>
+    <string name="changeWinners">Siegermannschaften ändern</string>
+    <string name="game">Spiel</string>
 
 </resources>

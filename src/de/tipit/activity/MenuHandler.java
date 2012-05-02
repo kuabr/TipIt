@@ -11,7 +11,6 @@ import de.tipit.helper.SessionContainer;
 import de.tipit.helper.Transfer;
 import de.tipit.server.transfer.access.GeneralError;
 import de.tipit.server.transfer.data.ContextTO;
-import de.tipit.server.transfer.data.SessionTO;
 
 public class MenuHandler {
 
@@ -19,15 +18,13 @@ public class MenuHandler {
 
     private final MenuActivity activity;
 
-    private static void doLogout(SessionTO session) throws GeneralError {
-        if (session != null && session.getSessionId() != null) {
-            // create transfer objects
-            ContextTO context = new ContextTO();
-            context.setLanguage(ContextTO.Language.DE);
+    private static void doLogout() throws GeneralError {
+        // create transfer objects
+        ContextTO context = new ContextTO();
+        context.setLanguage(ContextTO.Language.DE);
 
-            // do invocation
-            Transfer.getInstance().getUserSessionTransfer().doLogout(context, session);
-        }
+        // do invocation
+        Transfer.getInstance().getUserSessionTransfer().doLogout(context, SessionContainer.getSession());
     }
 
     private void handlePropertiesClick() {
@@ -44,7 +41,7 @@ public class MenuHandler {
             public void run() {
                 try {
                     if (SessionContainer.hasSession()) {
-                        MenuHandler.doLogout(SessionContainer.getSession());
+                        MenuHandler.doLogout();
                         SessionContainer.setSession(null);
                     }
 

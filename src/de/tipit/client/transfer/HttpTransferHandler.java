@@ -22,8 +22,11 @@ import org.simpleframework.xml.core.Persister;
 import de.tipit.server.transfer.access.GeneralError;
 import de.tipit.server.transfer.access.InvocationResult;
 import de.tipit.server.transfer.access.ResultData;
+import de.tipit.xml.Matcher;
 
 public class HttpTransferHandler implements TransferHandler {
+
+    protected static final Matcher matcher = new Matcher();
 
     protected static final int CONNECTION_TIMEOUT_MILLIS = 2000;
 
@@ -44,7 +47,7 @@ public class HttpTransferHandler implements TransferHandler {
     public ResultData doTransfer(final Object invocationObject, final String serviceName) throws GeneralError {
         // serialize invocation object into a string
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        Serializer serializer = new Persister();
+        Serializer serializer = new Persister(HttpTransferHandler.matcher);
         String data = null;
         try {
             serializer.write(invocationObject, out);

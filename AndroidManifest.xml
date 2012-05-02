@@ -32,6 +32,10 @@
             android:name="de.tipit.activity.bet_result.BetResultActivity"
             android:label="@string/appName" >
         </activity>
+        <activity
+            android:name=".activity.bet_result.AddGameBetsActivity"
+            android:label="@string/appName" >
+        </activity>
     </application>
 
 </manifest>

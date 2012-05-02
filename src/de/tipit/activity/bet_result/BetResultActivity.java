@@ -1,5 +1,9 @@
 package de.tipit.activity.bet_result;
 
+import java.util.Date;
+import java.util.List;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,13 +14,36 @@ import de.tipit.R;
 import de.tipit.R.id;
 import de.tipit.activity.MenuActivity;
 import de.tipit.activity.MenuHandler;
+import de.tipit.helper.DateTimeCalc;
+import de.tipit.helper.IntentData;
 import de.tipit.helper.Messenger;
+import de.tipit.helper.SessionContainer;
+import de.tipit.helper.Transfer;
+import de.tipit.server.transfer.access.GeneralError;
+import de.tipit.server.transfer.data.ContextTO;
+import de.tipit.server.transfer.data.GameDataResultTO;
+import de.tipit.server.transfer.data.PeriodTO;
 
 public class BetResultActivity extends MenuActivity {
+
+    private static final long NR_OF_DAYS_FOR_BET_PERIOD = 7L;
 
     private final Messenger messenger = new Messenger(this);
 
     private final MenuHandler menuDelegate = new MenuHandler(this.messenger, this);
+
+    private static List<GameDataResultTO> getGamesWithMissingBetForPeriod(long nrOfDaysForBetPeriod) throws GeneralError {
+        // create transfer objects
+        ContextTO context = new ContextTO();
+        context.setLanguage(ContextTO.Language.DE);
+        PeriodTO period = new PeriodTO();
+        Date currentDate = new Date();
+        period.setFirst(currentDate);
+        period.setLast(DateTimeCalc.addDaysToDate(currentDate, nrOfDaysForBetPeriod));
+
+        // do invocation
+        return Transfer.getInstance().getBetResultTransfer().getGamesWithMissingBetForPeriod(context, SessionContainer.getSession(), period);
+    }
 
     private void inspireShowTournOverviewButton() {
         Button loginButton = (Button) findViewById(+id.showTournOverviewButton);
@@ -28,8 +55,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireShowLastResultBetsButton() {
-        Button loginButton = (Button) findViewById(+id.showLastResultBetsButton);
+    private void inspireShowGameBetsButton() {
+        Button loginButton = (Button) findViewById(+id.showGameBetsButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -38,8 +65,36 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireAddNextResultBetsButton() {
-        Button loginButton = (Button) findViewById(+id.addNextResultBetsButton);
+    private void inspireAddGameBetsButton() {
+        Button loginButton = (Button) findViewById(+id.addGameBetsButton);
+        loginButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            final List<GameDataResultTO> data = BetResultActivity.getGamesWithMissingBetForPeriod(NR_OF_DAYS_FOR_BET_PERIOD);
+                            BetResultActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    IntentData.getInstance().setNextData(data);
+                                    startActivity(new Intent(BetResultActivity.this, AddGameBetsActivity.class));
+                                }
+                            });
+                        } catch (GeneralError error) {
+                            BetResultActivity.this.messenger.showError(error);
+                        } catch (RuntimeException exc) {
+                            BetResultActivity.this.messenger.showError(exc);
+                        }
+                    }
+                }).start();
+            }
+        });
+    }
+
+    private void inspireShowWinnerBetsButton() {
+        Button loginButton = (Button) findViewById(+id.showWinnerBetsButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -48,8 +103,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireShowLastWinnerBetsButton() {
-        Button loginButton = (Button) findViewById(+id.showLastWinnerBetsButton);
+    private void inspireAddWinnerBetsButton() {
+        Button loginButton = (Button) findViewById(+id.addWinnerBetsButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -58,8 +113,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireAddNextWinnerBetsButton() {
-        Button loginButton = (Button) findViewById(+id.addNextWinnerBetsButton);
+    private void inspireShowResultsButton() {
+        Button loginButton = (Button) findViewById(+id.showResultsButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -68,18 +123,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireShowLastResultsButton() {
-        Button loginButton = (Button) findViewById(+id.showLastResultsButton);
-        loginButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                messenger.showFeatureNotImplementedError();
-            }
-        });
-    }
-
-    private void inspireAddNextResultsButton() {
-        Button loginButton = (Button) findViewById(+id.addNextResultsButton);
+    private void inspireAddResultsButton() {
+        Button loginButton = (Button) findViewById(+id.addResultsButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -98,8 +143,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireAddNextMatchesButton() {
-        Button loginButton = (Button) findViewById(+id.addNextMatchesButton);
+    private void inspireAddMatchesButton() {
+        Button loginButton = (Button) findViewById(+id.addMatchesButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -118,8 +163,8 @@ public class BetResultActivity extends MenuActivity {
         });
     }
 
-    private void inspireAddNextWinnersButton() {
-        Button loginButton = (Button) findViewById(+id.addNextWinnersButton);
+    private void inspireAddWinnersButton() {
+        Button loginButton = (Button) findViewById(+id.addWinnersButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -154,16 +199,16 @@ public class BetResultActivity extends MenuActivity {
         setContentView(R.layout.bet_result);
 
         this.inspireShowTournOverviewButton();
-        this.inspireShowLastResultBetsButton();
-        this.inspireAddNextResultBetsButton();
-        this.inspireShowLastWinnerBetsButton();
-        this.inspireAddNextWinnerBetsButton();
-        this.inspireShowLastResultsButton();
-        this.inspireAddNextResultsButton();
+        this.inspireShowGameBetsButton();
+        this.inspireAddGameBetsButton();
+        this.inspireShowWinnerBetsButton();
+        this.inspireAddWinnerBetsButton();
+        this.inspireShowResultsButton();
+        this.inspireAddResultsButton();
         this.inspireChangeResultsButton();
-        this.inspireAddNextMatchesButton();
+        this.inspireAddMatchesButton();
         this.inspireChangeMatchesButton();
-        this.inspireAddNextWinnersButton();
+        this.inspireAddWinnersButton();
         this.inspireChangeWinnersButton();
     }
 
